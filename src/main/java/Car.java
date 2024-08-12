@@ -32,9 +32,6 @@ public class Car {
         return number == car.number && Objects.equals(brand, car.brand);
     }
 
-    public Car returnCar(){
-        return(this);
-    }
     @Override
     public int hashCode() {
         return Objects.hash(brand, number);
