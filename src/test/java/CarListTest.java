@@ -9,7 +9,7 @@ public class CarListTest {
 
     @Before
     public void setUp() throws Exception {
-        carList = new CarArrayList();
+        carList = new CarLinkedList();
         for (int i = 0; i < 100; i++) {
             carList.add(new Car("Brand" + i, i));
         }
@@ -81,5 +81,14 @@ public class CarListTest {
         carList.add(car, 100);
         Car carFromList = carList.get(100);
         assertEquals("BMW", carFromList.getBrand());
+    }
+
+    @Test
+    public void IfOurSetContainsOurObjectThenReturnTrue(){
+        Car car = new Car("brand500",500);
+        assertTrue(carList.add(car));
+        assertTrue(carList.contains(car));
+        assertTrue(carList.remove(car));
+        assertFalse(carList.contains(car));
     }
 }

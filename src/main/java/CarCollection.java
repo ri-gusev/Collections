@@ -1,4 +1,4 @@
-public interface CarSet extends CarCollection {
+public interface CarCollection  {
 
     int size();
 

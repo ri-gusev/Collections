@@ -81,6 +81,21 @@ public class CarHashSet implements CarSet{
         size = 0;
     }
 
+    @Override
+    public boolean contains(Car car) {
+        int position = getElementPosition(car, array.length);
+
+        Entry existedElement = array[position];
+        while (existedElement != null){
+            if (existedElement.value.equals(car)){
+                return true;
+            }else{
+                existedElement = existedElement.next;
+            }
+        }
+        return false;
+    }
+
     //Method to find element position
     private int getElementPosition(Car car, int arrayLength){
         return Math.abs(car.hashCode() % arrayLength);
