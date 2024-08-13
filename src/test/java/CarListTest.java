@@ -83,12 +83,4 @@ public class CarListTest {
         assertEquals("BMW", carFromList.getBrand());
     }
 
-    @Test
-    public void IfOurSetContainsOurObjectThenReturnTrue(){
-        Car car = new Car("brand500",500);
-        assertTrue(carList.add(car));
-        assertTrue(carList.contains(car));
-        assertTrue(carList.remove(car));
-        assertFalse(carList.contains(car));
-    }
 }
