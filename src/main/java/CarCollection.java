@@ -1,4 +1,6 @@
-public interface CarCollection  {
+import java.util.Iterator;
+
+public interface CarCollection extends Iterable<Car> {
 
     int size();
 
@@ -9,4 +11,7 @@ public interface CarCollection  {
     void clear();
 
     boolean contains(Car car);
+
+    @Override
+    Iterator<Car> iterator();
 }

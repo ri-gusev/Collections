@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public interface CarList extends CarCollection{
 
     Car get(int index);
@@ -13,4 +15,7 @@ public interface CarList extends CarCollection{
     void clear();
 
     boolean contains(Car car);
+
+    @Override
+    Iterator<Car> iterator();
 }

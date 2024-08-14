@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class CarHashSet implements CarSet{
 
     private int size = 0;
@@ -8,6 +10,41 @@ public class CarHashSet implements CarSet{
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public Iterator<Car> iterator() {
+        return new Iterator<Car>() {
+
+            private int index = 0;
+            Entry entry;
+            int arrayIndex = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < size;
+            }
+
+            @Override
+            public Car next() {
+                while (array[arrayIndex] == null){
+                    arrayIndex++;
+                }
+
+                if (entry == null) {
+                    entry = array[arrayIndex];
+                }
+
+                Car result = entry.value;
+                entry = entry.next;
+
+                if (entry == null){
+                    arrayIndex++;
+                }
+                index ++;
+                return result;
+            }
+        };
     }
 
     @Override

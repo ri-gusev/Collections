@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public interface CarSet extends CarCollection {
 
     int size();
@@ -9,4 +11,7 @@ public interface CarSet extends CarCollection {
     void clear();
 
     boolean contains(Car car);
+
+    @Override
+    Iterator<Car> iterator();
 }
