@@ -1,17 +1,17 @@
 import java.util.List;
 import java.util.Set;
 
-public interface CarMap {
+public interface CarMap<T,E> {
 
-    void put(CarOwner key, Car value);
+    void put(T key, E value);
 
-    Car get(CarOwner key);
+    E get(T key);
 
-    Set<CarOwner> keysSet();
+    Set<T> keysSet();
 
-    List<Car> values();
+    List<E> values();
 
-    boolean remove(CarOwner key);
+    boolean remove(T key);
 
     int size();
 

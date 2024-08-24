@@ -1,17 +1,17 @@
 import java.util.Iterator;
 
-public interface CarCollection extends Iterable<Car> {
+public interface CarCollection<T> extends Iterable<T> {
 
     int size();
 
-    boolean add(Car car);
+    boolean add(T car);
 
-    boolean remove(Car car);
+    boolean remove(T car);
 
     void clear();
 
-    boolean contains(Car car);
+    boolean contains(T car);
 
     @Override
-    Iterator<Car> iterator();
+    Iterator<T> iterator();
 }
