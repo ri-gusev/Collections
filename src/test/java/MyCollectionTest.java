@@ -3,12 +3,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class CarCollectionTest {
+public class MyCollectionTest {
 
-    private CarCollection carCollection;
+    private MyCollection<Car> carCollection;
+
     @Before
     public void setUp() throws Exception {
-        carCollection = new CarHashSet();
+        carCollection = new MyHashSet<Car>();
         for (int i = 0; i < 100; i++) {
             carCollection.add(new Car("Brand" + i, i));
         }

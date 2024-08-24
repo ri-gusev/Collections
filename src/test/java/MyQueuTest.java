@@ -3,13 +3,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class CarQueuTest {
+public class MyQueuTest {
 
-    private CarQueu queu;
+    private MyQueu<Car> queu;
 
     @Before
     public void setUp() throws Exception {
-        queu = new CarLinkedList();
+        queu = new MyLinkedList<Car>();
     }
 
     @Test

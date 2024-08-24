@@ -1,12 +1,16 @@
 import java.util.Iterator;
 
-public interface CarSet<T> extends CarCollection<T> {
+public interface MyList<T> extends MyCollection<T>{
 
-    int size();
+    T get(int index);
 
     boolean add(T car);
+    boolean add(T car, int index);
 
     boolean remove(T car);
+    boolean removeAt(int index);
+
+    int size();
 
     void clear();
 

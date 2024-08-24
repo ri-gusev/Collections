@@ -3,15 +3,15 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class CarHashMap implements CarMap{
+public class MyHashMap<T,E> implements MyMap<T,E> {
 
-    private Entry[] array = new Entry[16];
+    private Object[] array = new Object[16];
     private int size = 0;
     private static final int INITIAL_CAPACITY = 16;
     private static final double LOAD_FACTOR = 0.75;
 
     @Override
-    public void put(CarOwner key, Car value) {
+    public void put(T key, E value) {
         if (size >= array.length * LOAD_FACTOR){
             increaseArray();
         }
@@ -22,9 +22,9 @@ public class CarHashMap implements CarMap{
     }
 
     @Override
-    public Car get(CarOwner key) {
+    public E get(T key) {
         int position = getElementPosition(key, array.length);
-        Entry existedElement = array[position];
+        Entry existedElement = (Entry) array[position];
         while (existedElement != null) {
             if (existedElement.key.equals(key)) {
                 return existedElement.value;
@@ -35,10 +35,10 @@ public class CarHashMap implements CarMap{
     }
 
     @Override
-    public Set<CarOwner> keysSet() {
-        Set<CarOwner> resultSet = new HashSet<>();
-        for (Entry el : array){
-            Entry existedElement = el;
+    public Set<T> keysSet() {
+        Set<T> resultSet = new HashSet<>();
+        for (Object el : array){
+            Entry existedElement = (Entry) el;
             while (existedElement != null){
                 resultSet.add(existedElement.key);
                 existedElement = existedElement.next;
@@ -48,10 +48,10 @@ public class CarHashMap implements CarMap{
     }
 
     @Override
-    public List<Car> values() {
-        List<Car> resultList = new ArrayList<>();
-        for (Entry el : array){
-            Entry existedElement = el;
+    public List<E> values() {
+        List<E> resultList = new ArrayList<>();
+        for (Object el : array){
+            Entry existedElement = (Entry) el;
             while (existedElement != null){
                 resultList.add(existedElement.value);
                 existedElement = existedElement.next;
@@ -61,9 +61,9 @@ public class CarHashMap implements CarMap{
     }
 
     @Override
-    public boolean remove(CarOwner key) {
+    public boolean remove(T key) {
         int position = getElementPosition(key, array.length);
-        Entry existedElement = array[position];
+        Entry existedElement = (Entry) array[position];
 
         if (existedElement != null && existedElement.key.equals(key)){
             array[position] = existedElement.next;
@@ -87,9 +87,9 @@ public class CarHashMap implements CarMap{
         return false;
     }
 
-    private boolean put(CarOwner key, Car value, Entry[] dst){
+    private boolean put(T key, E value, Object[] dst){
         int position = getElementPosition(key, dst.length);
-        Entry existedEl = dst[position];
+        Entry existedEl = (Entry) dst[position];
 
         if (existedEl == null) {
             Entry entry = new Entry(key,value,null);
@@ -110,14 +110,14 @@ public class CarHashMap implements CarMap{
         }
     }
 
-    private int getElementPosition(CarOwner carOwner, int arrayLength){
+    private int getElementPosition(T carOwner, int arrayLength){
         return Math.abs(carOwner.hashCode() % arrayLength);
     }
 
     private void increaseArray(){
-        Entry[] newArray = new Entry[array.length * 2];
-        for (Entry el : array){
-            Entry existedElement = el;
+        Object[] newArray = new Object[array.length * 2];
+        for (Object el : array){
+            Entry existedElement = (Entry) el;
             while (existedElement != null){
                 put(existedElement.key, existedElement.value, newArray);
                 existedElement = existedElement.next;
@@ -133,15 +133,15 @@ public class CarHashMap implements CarMap{
     @Override
     public void clear() {
         size = 0;
-        array = new Entry[INITIAL_CAPACITY];
+        array = new Object[INITIAL_CAPACITY];
     }
 
-    private static class Entry{
-        Car value;
-        CarOwner key;
+    private class Entry{
+        E value;
+        T key;
         Entry next;
 
-        public Entry(CarOwner key,Car value, Entry next) {
+        public Entry(T key,E value, Entry next) {
             this.key = key;
             this.value = value;
             this.next = next;

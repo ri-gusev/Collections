@@ -1,4 +1,4 @@
-public interface CarQueu<T> extends CarCollection<T> {
+public interface MyQueu<T> extends MyCollection<T> {
 
     boolean add(T car);
 

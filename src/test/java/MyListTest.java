@@ -3,13 +3,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class CarListTest {
+public class MyListTest {
 
-    private CarList carList;
+    private MyList<Car> carList;
 
     @Before
     public void setUp() throws Exception {
-        carList = new CarLinkedList();
+        carList = new MyLinkedList<Car>();
         for (int i = 0; i < 100; i++) {
             carList.add(new Car("Brand" + i, i));
         }

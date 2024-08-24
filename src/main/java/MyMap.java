@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Set;
 
-public interface CarMap<T,E> {
+public interface MyMap<T,E> {
 
     void put(T key, E value);
 

@@ -1,16 +1,15 @@
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class CarMapTest {
+public class MyMapTest {
 
-    private CarMap carMap;
+    private MyMap<CarOwner,Car> carMap;
 
     @Before
     public void setUp() throws Exception {
-        carMap = new CarHashMap();
+        carMap = new MyHashMap<CarOwner,Car>();
     }
 
     @Test

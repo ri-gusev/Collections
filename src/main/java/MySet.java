@@ -1,6 +1,6 @@
 import java.util.Iterator;
 
-public interface CarCollection<T> extends Iterable<T> {
+public interface MySet<T> extends MyCollection<T> {
 
     int size();
 
